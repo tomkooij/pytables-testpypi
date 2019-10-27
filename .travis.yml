@@ -14,6 +14,9 @@ addons:
     - libhdf5-serial-dev
     - liblzo2-dev
 
+before_install:
+  - pip install numpy numexpr  # install requirements from regural PyPI
+
 install:
   - pip install -i https://test.pypi.org/simple/ --no-binary=tables tables
 
