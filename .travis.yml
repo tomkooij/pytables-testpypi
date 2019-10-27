@@ -1,0 +1,25 @@
+language: python
+dist: xenial
+
+python:
+  #- 2.7  # should download/install v3.5.2
+  #- 3.5  # should download/install v3.5.2
+  - 3.6
+  - 3.7
+  - 3.8-dev
+
+addons:
+  apt_packages:
+    - libbz2-dev
+    - libhdf5-serial-dev
+    - liblzo2-dev
+
+install:
+  - pip install -i https://test.pypi.org/simple/ --no-binary=tables tables
+
+script:
+  - cd .. && python -m tables.tests.test_all
+  - pt2to3 -h
+  - ptrepack -h
+  - ptdump -h
+  - pttree -h
