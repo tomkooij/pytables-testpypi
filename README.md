@@ -1,7 +1,9 @@
 # pytables-testpypi
 Download and pip install packages from testpypi (to test pytables releases)
 
-Note to self::
+Travis CI https://travis-ci.org/tomkooij/pytables-testpypi
+
+How-to::
 
 $ python setup.py sdist
 
