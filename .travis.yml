@@ -18,8 +18,8 @@ before_install:
   - pip install numpy numexpr  # install requirements from regural PyPI
 
 install:
-  - pip install -i https://test.pypi.org/simple/ --no-binary=tables tables
-  - pip download -i https://test.pypi.org/simple/ --only-binary=tables --no-deps tables
+  - pip install --no-binary=tables tables
+  - pip download --only-binary=tables --no-deps tables
   - ls
 
 script:
