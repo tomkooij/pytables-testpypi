@@ -19,7 +19,8 @@ before_install:
 
 install:
   - pip install -i https://test.pypi.org/simple/ --no-binary=tables tables
-  - pip download --only-binary=tables --no-deps tables
+  - pip download -i https://test.pypi.org/simple/ --only-binary=tables --no-deps tables
+  - ls
 
 script:
   - cd .. && python -m tables.tests.test_all
