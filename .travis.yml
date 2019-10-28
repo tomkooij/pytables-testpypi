@@ -6,7 +6,7 @@ python:
   - 3.5
   - 3.6
   - 3.7
-  - 3.8-dev
+  - 3.8
 
 addons:
   apt_packages:
@@ -19,6 +19,7 @@ before_install:
 
 install:
   - pip install -i https://test.pypi.org/simple/ --no-binary=tables tables
+  - pip download --only-binary=tables --no-deps tables
 
 script:
   - cd .. && python -m tables.tests.test_all
