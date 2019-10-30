@@ -1,0 +1,37 @@
+environment:
+
+  matrix:
+
+    # Pre-installed Python versions, which Appveyor may upgrade to
+    # a later point release.
+    # See: https://www.appveyor.com/docs/installed-software#python
+
+    #- PYTHON: "C:\\Python38"
+    #- PYTHON: "C:\\Python38-x64"
+    - PYTHON: "C:\\Python37"
+    - PYTHON: "C:\\Python37-x64"
+
+    # older deprecated releases
+    - PYTHON: "C:\\Python27-x64"
+    - PYTHON: "C:\\Python35-x64"
+    - PYTHON: "C:\\Python36-x64"
+
+
+install:
+  - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
+  # Check that we have the expected version and architecture for Python
+  - "python --version"
+  - "python -c \"import struct; print(struct.calcsize('P') * 8)\""
+
+  # Upgrade to the latest version of pip to avoid it displaying warnings
+  # about it being out of date.
+  - "python -m pip install --upgrade pip"
+
+  # install dependencies from regular PyPI
+  - "python -m pip install numpy numexpr"
+
+build_script:
+  - "python -m pip install tables"
+
+test_script:
+  - "python -m tables.tests.test_all"
